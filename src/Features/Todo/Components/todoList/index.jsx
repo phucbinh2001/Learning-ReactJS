@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import TodoPage from "../../Pages/todoPage";
 import "./style.css";
+
+
 export default function TodoList() {
   const todoList = [
     { id: 1, title: "Eat", isComplete: "new" },
@@ -24,13 +26,14 @@ export default function TodoList() {
   //Nếu param thay đổi thì cập nhật filter
   useEffect(() => {
     const param = queryString.parse(location.search);
-    setFilter(param.status || "all")
+    setFilter(param.status || "all");
   }, [location.search]);
 
-  const handleTodo = (todo, index) => {
-    console.log(todo, index);
+  //Chuyển trạng thái task
+  const handleTodo = (statusTask, index) => {
     const newTodoList = [...Todo];
-    newTodoList[index].isComplete = !newTodoList[index].isComplete;
+    const isComplete = newTodoList[index].isComplete;
+    newTodoList[index].isComplete = (isComplete==="new") ? "done" : "new";
     setTodo(newTodoList);
   };
 

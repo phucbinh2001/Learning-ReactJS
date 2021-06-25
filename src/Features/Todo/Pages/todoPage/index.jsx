@@ -6,7 +6,7 @@ import classnames from "classnames";
 function TodoPage({ todoList, todoOnClick }) {
   const handlerOnClick = (todo, index) => {
     if (!todoOnClick) return;
-    todoOnClick(todo, index);
+    todoOnClick(todo.isComplete, index);
   };
 
   return (
