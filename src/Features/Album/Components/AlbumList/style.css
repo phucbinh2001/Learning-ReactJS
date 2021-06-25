@@ -1,0 +1,11 @@
+.album-list {
+    display: flex;
+}
+
+.album {
+    margin-right: 10px;
+}
+
+.album__thumnail {
+    border-radius: 5px;
+}
