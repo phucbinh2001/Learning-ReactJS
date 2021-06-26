@@ -1,9 +1,24 @@
-import "./App.css";
-import TodoFeature from "./Features/Todo";
-import AlbumFeature from "./Features/Album";
-import { Switch, Route, NavLink } from "react-router-dom";
+import React, { useEffect } from 'react';
+
+import './App.css';
+import TodoFeature from './Features/Todo';
+import AlbumFeature from './Features/Album';
+import { Switch, Route, NavLink } from 'react-router-dom';
+import productAPI from './api/productApi';
 
 function App() {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const params = {
+        _limit: 10,
+      };
+      const productList = await productAPI.getAll(params);
+      console.log(productList);
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <div>
       <NavLink to="/todolist">TodoList</NavLink>
