@@ -1,6 +1,6 @@
-import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Proptypes from 'prop-types';
+import React from 'react';
 import { Controller } from 'react-hook-form';
 
 InputField.prototype = {
@@ -14,9 +14,9 @@ InputField.prototype = {
 function InputField(props) {
   const { form, name, lable, disabled } = props;
   const { errors, formState } = form;
-  const hasErr = formState.touched[name] && errors[name];
-  console.log(formState.touched[name], errors[name]);
-  console.log('haserr:', !!hasErr);
+  const hasErr = errors[name]?.message;
+  // console.log('hasErr', hasErr, errors[name]);
+  // console.log('haserr:', !!hasErr);
   return (
     <Controller
       name={name}
